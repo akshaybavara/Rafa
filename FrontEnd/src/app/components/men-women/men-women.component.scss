@@ -1,0 +1,108 @@
+.men-women-section {
+  position: relative;
+  width: 100%;
+  padding: 0; /* Remove default section padding */
+}
+
+.split-layout {
+  display: flex;
+  height: 80vh;
+  min-height: 600px;
+}
+
+.split-pane {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1s ease;
+    z-index: 1;
+  }
+  
+  &.for-her {
+    background-color: #E8E2D5;
+    /* Placeholder for actual image */
+    &::before {
+      background-image: linear-gradient(to right, rgba(232,226,213,0.8), rgba(232,226,213,0.4));
+    }
+  }
+  
+  &.for-him {
+    background-color: #D3CEC2;
+    /* Placeholder for actual image */
+    &::before {
+      background-image: linear-gradient(to left, rgba(211,206,194,0.8), rgba(211,206,194,0.4));
+    }
+  }
+
+  &:hover {
+    flex: 1.1;
+    
+    &::before {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.pane-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 400px;
+  
+  h2 {
+    font-family: var(--font-heading-en);
+    font-size: 3.5rem;
+    color: var(--color-primary-green);
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    color: var(--color-earthy-brown);
+  }
+}
+
+.centered-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-cream);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  
+  span {
+    font-family: var(--font-heading-en);
+    color: var(--color-primary-green);
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 992px) {
+  .split-layout {
+    flex-direction: column;
+  }
+  
+  .split-pane {
+    height: 50vh;
+  }
+  
+  .split-pane:hover {
+    flex: 1;
+  }
+}

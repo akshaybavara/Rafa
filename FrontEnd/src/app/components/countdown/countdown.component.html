@@ -1,0 +1,30 @@
+<section class="countdown-section">
+  <div class="container text-center">
+    <ng-container *ngIf="!hasLaunched; else launchedTemplate">
+      <h3 class="countdown-title">LAUNCHING SOON</h3>
+      <div class="countdown-wrapper">
+        <div class="time-box">
+          <div class="number">{{ days }}</div>
+          <div class="label">Days</div>
+        </div>
+        <div class="time-box">
+          <div class="number">{{ hours }}</div>
+          <div class="label">Hours</div>
+        </div>
+        <div class="time-box">
+          <div class="number">{{ minutes }}</div>
+          <div class="label">Minutes</div>
+        </div>
+        <div class="time-box">
+          <div class="number">{{ seconds }}</div>
+          <div class="label">Seconds</div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #launchedTemplate>
+      <div class="launched-wrapper">
+        <h2 class="launched-title">RAFA HAS ARRIVED</h2>
+      </div>
+    </ng-template>
+  </div>
+</section>

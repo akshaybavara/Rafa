@@ -1,0 +1,34 @@
+<section id="notify" class="notify-section">
+  <div class="container text-center">
+    <div class="notify-wrapper">
+      <h2>Be the First to Experience RAFA</h2>
+      <p class="notify-desc">लॉन्च की जानकारी सबसे पहले पाने के लिए अपना email दर्ज करें।</p>
+      
+      <div class="form-container" *ngIf="!isSubmitted">
+        <form #notifyForm="ngForm" (ngSubmit)="onSubmit(notifyForm)">
+          <div class="input-group">
+            <input 
+              type="email" 
+              name="email" 
+              [(ngModel)]="email" 
+              placeholder="Enter your email address" 
+              required 
+              email
+              #emailInput="ngModel"
+              [class.error]="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+            >
+            <button type="submit" class="btn-primary" [disabled]="notifyForm.invalid">Notify Me</button>
+          </div>
+          <div class="error-msg" *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+            Please enter a valid email address.
+          </div>
+        </form>
+      </div>
+
+      <div class="success-message" *ngIf="isSubmitted">
+        <h3>Thank you!</h3>
+        <p>We'll let you know when RAFA launches.</p>
+      </div>
+    </div>
+  </div>
+</section>

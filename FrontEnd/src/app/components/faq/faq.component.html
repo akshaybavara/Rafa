@@ -1,0 +1,25 @@
+<section id="faq" class="faq-section">
+  <div class="container">
+    <div class="section-header text-center mb-8">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-accordion">
+      <div class="faq-item" *ngFor="let faq of faqs; let i = index" [class.open]="faq.isOpen">
+        <button class="faq-question" (click)="toggleFaq(i)" [attr.aria-expanded]="faq.isOpen">
+          {{ faq.question }}
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </button>
+        <div class="faq-answer" [style.max-height]="faq.isOpen ? '200px' : '0'">
+          <div class="answer-inner">
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

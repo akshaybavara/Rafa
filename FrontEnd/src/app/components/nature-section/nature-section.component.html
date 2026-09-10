@@ -1,0 +1,75 @@
+<section class="nature-section" id="ingredients">
+  <div class="container">
+    <div class="section-header text-center mb-8">
+      <h2>प्रकृति से प्रेरित। बालों के लिए बनाया गया।</h2>
+      <p class="section-subtitle" style="margin-top: 1rem; color: var(--color-text-muted);">Explore our botanical ingredients</p>
+    </div>
+
+    <div class="ingredients-grid" role="list">
+      @for (item of ingredients; track item.id) {
+        <button 
+          class="ingredient-card" 
+          [class.active]="selectedIngredient()?.id === item.id"
+          (click)="selectIngredient(item)"
+          [attr.aria-expanded]="selectedIngredient()?.id === item.id"
+          role="listitem">
+          <div class="img-placeholder botanical {{ item.imageClass }}">
+            <img [src]="item.imageUrl" [alt]="item.name" loading="lazy" class="lazy-image" onerror="this.style.opacity='0'">
+          </div>
+          <h4>{{ item.name }}</h4>
+          <p>{{ item.tagline }}</p>
+        </button>
+      }
+    </div>
+
+    @if (selectedIngredient(); as ingredient) {
+      <div id="ingredient-detail-panel" class="ingredient-detail-panel">
+        <button class="panel-close" (click)="closePanel()" aria-label="Close details">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        
+        <div class="panel-layout">
+          <div class="panel-image">
+            <div class="img-large-placeholder {{ ingredient.imageClass }}">
+              <img [src]="ingredient.imageUrl" [alt]="ingredient.name" loading="lazy" class="lazy-image" onerror="this.style.opacity='0'">
+            </div>
+          </div>
+          
+          <div class="panel-content">
+            <div class="panel-header">
+              <span class="story-label">INGREDIENT STORY</span>
+              <h3 class="gradient-text-1">{{ ingredient.name }}</h3>
+              <p class="tagline">{{ ingredient.tagline }}</p>
+            </div>
+            
+            <div class="story-sections">
+              <div class="story-section">
+                <h5>What it is</h5>
+                <p>{{ ingredient.whatItIs }}</p>
+              </div>
+              
+              <div class="story-section">
+                <h5>Why it's included</h5>
+                <p>{{ ingredient.whyIncluded }}</p>
+              </div>
+              
+              <div class="story-section">
+                <h5>Traditional use</h5>
+                <p>{{ ingredient.traditionalUse }}</p>
+              </div>
+              
+              <div class="story-section">
+                <h5>Formula support</h5>
+                <p>{{ ingredient.formulaSupport }}</p>
+              </div>
+            </div>
+
+            <div class="panel-footer">
+              <p>Ingredient information is presented for cosmetic and traditional-use context. Individual results may vary.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

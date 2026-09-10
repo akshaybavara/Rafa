@@ -1,0 +1,140 @@
+.product-reveal {
+  background-color: var(--color-primary-green);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0;
+}
+
+.reveal-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Base styles for steps */
+.step {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Animations triggered by intersection observer */
+.animate {
+  .step-1 {
+    animation: revealStep 1s forwards;
+  }
+  
+  .step-2 {
+    animation: revealStep 1s 0.8s forwards;
+    
+    .halo {
+      animation: expandHalo 2s 1s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    
+    .package-silhouette {
+      animation: dropIn 1s 1.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    
+    .rafa-logo-reveal {
+      animation: fadeIn 1s 2s forwards;
+    }
+  }
+  
+  .step-3 {
+    animation: revealStep 1s 2.5s forwards;
+  }
+}
+
+.teaser-text {
+  color: var(--color-gold);
+  font-family: var(--font-body-en);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin-bottom: 4rem;
+}
+
+.reveal-visual {
+  position: relative;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.halo {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(194,168,120,0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.package-silhouette {
+  width: 180px;
+  height: 280px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.rafa-logo-reveal {
+  font-family: var(--font-heading-en);
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  letter-spacing: 3px;
+  opacity: 0;
+}
+
+.reveal-product-name {
+  font-family: var(--font-heading-en);
+  font-size: 2.8rem;
+  color: var(--color-cream);
+  margin-bottom: 1.5rem;
+}
+
+.reveal-badge {
+  display: inline-block;
+  padding: 8px 24px;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  border-radius: 30px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+@keyframes revealStep {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes expandHalo {
+  to { opacity: 1; transform: scale(12); }
+}
+
+@keyframes dropIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .reveal-product-name { font-size: 2rem; }
+  .teaser-text { font-size: 1.2rem; margin-bottom: 3rem; }
+  .package-silhouette { width: 140px; height: 220px; }
+}

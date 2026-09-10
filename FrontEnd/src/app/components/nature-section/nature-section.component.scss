@@ -1,0 +1,288 @@
+.nature-section {
+  background-color: transparent;
+  padding: 4rem 0;
+}
+
+.section-header h2 {
+  font-size: 2.8rem;
+  color: var(--color-text-dark);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ingredient-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(74, 222, 128, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    
+    .img-placeholder {
+      transform: scale(1.05);
+    }
+  }
+
+  &.active {
+    border-color: var(--color-primary-green);
+    box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.4), 0 12px 30px rgba(0,0,0,0.3);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+
+  h4 {
+    font-size: 1.3rem;
+    color: var(--color-primary-green);
+    margin: 1.5rem 1.5rem 0.5rem;
+    font-weight: 700;
+  }
+  
+  p {
+    color: #fff;
+    font-size: 0.95rem;
+    margin: 0 1.5rem 1.5rem;
+  }
+}
+
+.img-placeholder {
+  height: 200px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: transform 0.6s ease;
+  transform-origin: center;
+  position: relative;
+  
+  /* Placeholder gradients */
+  &.botanical-henna { background: linear-gradient(45deg, #1f4227, #2c5234); }
+  &.botanical-aloe { background: linear-gradient(45deg, #2b4c34, #3a6845); }
+  &.botanical-amla { background: linear-gradient(45deg, #4ade80, #204b2b); }
+  &.botanical-shikakai { background: linear-gradient(45deg, #3d3b2c, #5b5941); }
+  &.botanical-reetha { background: linear-gradient(45deg, #4a3e31, #6b5c4a); }
+  &.botanical-neem { background: linear-gradient(45deg, #11331d, #1b4d2c); }
+  &.botanical-bhringraj { background: linear-gradient(45deg, #18281a, #244028); }
+  &.botanical-tulsi { background: linear-gradient(45deg, #213c28, #30583b); }
+  &.botanical-onion { background: linear-gradient(45deg, #382b3a, #523e54); }
+
+  .lazy-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+}
+
+/* Detail Panel */
+.ingredient-detail-panel {
+  margin-top: 3rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--glass-border);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  animation: slideDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: var(--glass-shadow);
+
+  .panel-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+  }
+
+  .panel-layout {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 992px) {
+      flex-direction: row;
+    }
+  }
+
+  .panel-image {
+    flex: 1;
+    min-height: 250px;
+    
+    .img-large-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      &.botanical-henna { background: linear-gradient(45deg, #1f4227, #2c5234); }
+      &.botanical-aloe { background: linear-gradient(45deg, #2b4c34, #3a6845); }
+      &.botanical-amla { background: linear-gradient(45deg, #4ade80, #204b2b); }
+      &.botanical-shikakai { background: linear-gradient(45deg, #3d3b2c, #5b5941); }
+      &.botanical-reetha { background: linear-gradient(45deg, #4a3e31, #6b5c4a); }
+      &.botanical-neem { background: linear-gradient(45deg, #11331d, #1b4d2c); }
+      &.botanical-bhringraj { background: linear-gradient(45deg, #18281a, #244028); }
+      &.botanical-tulsi { background: linear-gradient(45deg, #213c28, #30583b); }
+      &.botanical-onion { background: linear-gradient(45deg, #382b3a, #523e54); }
+      
+      .lazy-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    @media (min-width: 992px) {
+      flex: 0 0 40%;
+    }
+  }
+
+  .panel-content {
+    flex: 1;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+
+    .story-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--color-primary-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--color-accent-orange, #f4a261);
+      margin-bottom: 2.5rem;
+      font-weight: 600;
+    }
+
+    .story-sections {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+
+      @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .story-section {
+        animation: fadeUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        opacity: 0;
+        transform: translateY(10px);
+        
+        &:nth-child(1) { animation-delay: 0.1s; }
+        &:nth-child(2) { animation-delay: 0.2s; }
+        &:nth-child(3) { animation-delay: 0.3s; }
+        &:nth-child(4) { animation-delay: 0.4s; }
+
+        h5 {
+          font-size: 0.95rem;
+          color: var(--color-primary-green);
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
+          padding-bottom: 0.5rem;
+        }
+
+        p {
+          color: var(--color-text-dark, #fdfaf4);
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+      }
+    }
+
+    .panel-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+
+      p {
+        font-size: 0.8rem;
+        color: #fff;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    max-height: 1500px;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  .ingredient-detail-panel .panel-content {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,112 @@
+.countdown-section {
+  padding: 6rem 0;
+  background-color: var(--color-primary-green);
+  color: var(--color-cream);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(194, 168, 120, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+}
+
+.countdown-title {
+  color: var(--color-gold);
+  letter-spacing: 3px;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  font-weight: 500;
+  font-family: var(--font-body-en);
+}
+
+.countdown-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  min-width: 140px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-smooth);
+  
+  &:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(194, 168, 120, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(194, 168, 120, 0.1);
+  }
+}
+
+.number {
+  font-family: var(--font-heading-en);
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: var(--color-cream);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  
+  /* Number transition effect */
+  animation: scaleIn 0.3s ease-out;
+}
+
+.label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  opacity: 0.9;
+}
+
+.launched-wrapper {
+  padding: 4rem 0;
+  animation: fadeUp 1s ease-out;
+}
+
+.launched-title {
+  font-size: 4rem;
+  color: var(--color-gold);
+  letter-spacing: 4px;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0.8; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .countdown-wrapper {
+    gap: 1rem;
+  }
+  
+  .time-box {
+    min-width: 100px;
+    padding: 1.5rem 1rem;
+  }
+  
+  .number {
+    font-size: 2.5rem;
+  }
+  
+  .launched-title {
+    font-size: 2.5rem;
+  }
+}
