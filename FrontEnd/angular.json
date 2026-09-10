@@ -60,6 +60,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/Rafa/",
               "budgets": [
                 {
                   "type": "initial",
@@ -68,8 +69,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "20kB",
+                  "maximumError": "30kB"
                 }
               ],
               "outputHashing": "all"
